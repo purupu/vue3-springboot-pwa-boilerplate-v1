@@ -6,9 +6,9 @@ const store = useStore();
 
 const logout = () => {
 
+  store.account.id = 0;
   axios.post("/api/account/logout").then( () => {
     alert('로그아웃 하였습니다.');
-    store.account.id = 0;
   });
   router.push({path:"/"});
 }
