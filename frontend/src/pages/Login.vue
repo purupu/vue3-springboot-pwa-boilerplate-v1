@@ -16,8 +16,6 @@ const submit = () => {
   axios.post("/api/account/login", state.form).then((res) => {
     const store = useStore();
     store.account.id = res.data;
-
-    console.log("header"+state.isRemember);
     if (state.isRemember) {
       localStorage.setItem("isRemember", "true");
       localStorage.setItem("email", state.form.email);
@@ -25,8 +23,6 @@ const submit = () => {
       localStorage.setItem("isRemember", "false");
       localStorage.removeItem("email");
     }
-
-    window.alert('로그인하였습니다.');
     router.push({path: "/"});
   }).catch(() => {
     window.alert("ID/PW를 확인해주세요.");
